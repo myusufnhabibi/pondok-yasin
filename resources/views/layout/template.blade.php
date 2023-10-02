@@ -10,6 +10,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/magnific.css') }}">
 </head>
 
 <body class="antialiased">
@@ -24,20 +25,38 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ asset('assets/js/magnific.js') }}"></script>
     <script>
         const navbar = document.querySelector('.fixed-top')
         window.onscroll = () => {
             if (window.scrollY > 100) {
                 navbar.classList.add("scroll-nav-active")
                 navbar.classList.add("scroll-text-active")
-                navbar.classList.remove("navbar-dark")
+                // navbar.classList.remove("navbar-dark")
             } else {
                 navbar.classList.remove("scroll-nav-active")
-                navbar.classList.add("navbar-dark")
+                // navbar.classList.add("navbar-dark")
             }
         }
 
         AOS.init();
+
+        $(document).ready(function() {
+            $('.image-link').magnificPopup({
+                type: 'image',
+                retina: {
+                    ratio: 1,
+                    replaceSrc: function(item, ration) {
+                        return item.src.replace(/\.w+$/, function(m) {
+                            return '@2x' + m;
+                        })
+                    }
+                }
+            })
+        })
     </script>
 </body>
 
