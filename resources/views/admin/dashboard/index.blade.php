@@ -8,18 +8,18 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card shadow border-0" style="width: 18rem;">
+                    <div class="card shadow-sm rounded-3 border-0">
                         <img class="card-img-top" src="{{ asset('assets/images/db-1.jpg') }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Blok Artikel</h5>
                             <p class="card-text">Atur dan kelola artikel kegiatan</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="/blog" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
 
                 </div>
                 <div class="col-lg-4">
-                    <div class="card shadow border-0" style="width: 18rem;">
+                    <div class="card shadow-sm rounded-3 border-0">
                         <img class="card-img-top" src="{{ asset('assets/images/db-3.jpg') }}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Foto Kegiatan</h5>

@@ -36,7 +36,7 @@
                         <button class="btn btn btn-danger" type="submit">Logout</button>
                     </form>
                 @else
-                    <button class="btn btn-danger"></button>
+                    <a href="/login" class="btn btn-danger">Login</a>
                 @endauth
             </div>
         </div>

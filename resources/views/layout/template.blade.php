@@ -11,6 +11,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/magnific.css') }}">
+    {{-- Summernote CSS di antara Head --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" />
+
 </head>
 
 <body class="antialiased">
@@ -29,6 +32,9 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('assets/js/magnific.js') }}"></script>
+    {{-- Summernote JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.js"></script>
+
     <script>
         const navbar = document.querySelector('.fixed-top')
         window.onscroll = () => {
@@ -56,8 +62,14 @@
                     }
                 }
             })
+
+            $('#summernote').summernote({
+                height: 200,
+            });
         })
     </script>
+
+    <script></script>
 </body>
 
 </html>
