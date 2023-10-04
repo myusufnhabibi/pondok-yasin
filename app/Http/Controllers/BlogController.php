@@ -57,7 +57,9 @@ class BlogController extends Controller
 
         // Image
         $fileName = time() . '.' . $request->image->extension();
-        $request->file('image')->storeAs('public/artikel', $fileName);
+        // $request->file('image')->storeAs('public/artikel', $fileName);
+        $storage_artikel =  public_path() . '/storage/artikel/' . $fileName;
+        Image::make($request->file('image')->getRealPath())->resize(770, 512)->save($storage_artikel);
 
         // Artikel
         $storage = "storage/content-artikel";
@@ -157,7 +159,9 @@ class BlogController extends Controller
                 \File::delete('storage/artikel/' . $request->old_image);
             }
             $fileName = time() . '.' . $request->image->extension();
-            $request->file('image')->storeAs('public/artikel', $fileName);
+            // $request->file('image')->storeAs('public/artikel', $fileName);
+            $storage_artikel =  public_path() . '/storage/artikel/' . $fileName;
+            Image::make($request->file('image')->getRealPath())->resize(770, 512)->save($storage_artikel);
         }
 
         if ($request->hasFile('image')) {
@@ -183,7 +187,7 @@ class BlogController extends Controller
                 $fileNameContent = uniqid();
                 $fileNameContentRand = substr(md5($fileNameContent), 6, 6) . '_' . time();
                 $filePath = ("$storage/$fileNameContentRand.$mimetype");
-                $image = Image::make($src)->resize(1200, 1200)->encode($mimetype, 100)->save(public_path($filePath));
+                $image = Image::make($src)->resize(1440, 720)->encode($mimetype, 100)->save(public_path($filePath));
                 $new_src = asset($filePath);
                 $img->removeAttribute('src');
                 $img->setAttribute('src', $new_src);

@@ -65,39 +65,20 @@
             </div>
 
             <div class="row py-5">
-                <div class="col-lg-4">
-                    <div class="card border-0" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="1000">
-                        <img src="{{ asset('assets/images/il-berita-01.png') }}" class="img-fluid mb-2" alt="">
-                        <div class="konten-berita">
-                            <p class="text-secondary mb-3">21/10/2023</p>
-                            <h4 class="fw-bold mb-3">Pengajian Bulanan Pesantren Yasin</h4>
-                            <p class="text-secondary">#pengajian</p>
-                            <a href="#" class="btn text-danger">Selengkapnya</a>
+                @foreach ($artikels as $item)
+                    <div class="col-lg-4">
+                        <div class="card border-0" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="1000">
+                            <img src="{{ asset('storage/artikel/' . $item->image) }}" class="img-fluid mb-2 rounded-3"
+                                alt="">
+                            <div class="konten-berita">
+                                <p class="text-secondary mb-3">{{ date('d-m-Y', strtotime($item->created_at)) }}</p>
+                                <h4 class="fw-bold mb-3">{{ $item->judul }}</h4>
+                                <p class="text-secondary">#pengajian</p>
+                                <a href="/detail/{{ $item->slug }}" class="btn text-danger">Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card border-0" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="1000">
-                        <img src="{{ asset('assets/images/il-berita-02.png') }}" class="img-fluid mb-2" alt="">
-                        <div class="konten-berita">
-                            <p class="text-secondary mb-3">21/10/2023</p>
-                            <h4 class="fw-bold mb-3">Pengajian Bulanan Pesantren Yasin</h4>
-                            <p class="text-secondary">#pengajian</p>
-                            <a href="#" class="btn text-danger">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card border-0" data-aos="zoom-in-up" data-aos-easing="linear" data-aos-duration="1000">
-                        <img src="{{ asset('assets/images/il-berita-03.png') }}" class="img-fluid mb-2" alt="">
-                        <div class="konten-berita">
-                            <p class="text-secondary mb-3">21/10/2023</p>
-                            <h4 class="fw-bold mb-3">Pengajian Bulanan Pesantren Yasin</h4>
-                            <p class="text-secondary">#pengajian</p>
-                            <a href="#" class="fw-bold text-danger">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="footer-berita text-center">
