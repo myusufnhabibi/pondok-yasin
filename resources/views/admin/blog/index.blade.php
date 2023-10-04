@@ -8,7 +8,7 @@
             <a href="/blog/create" class="btn btn-primary">Tambah Artikel</a>
             @if (session()->has('success'))
                 <div class="alert alert-success mt-2">
-                    {{ session()->get('success') }}
+                    <b>Info!</b> {{ session()->get('success') }}
                 </div>
             @endif
             <div class="table-responsive py-3">

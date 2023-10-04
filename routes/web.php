@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FotoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,4 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::resource('blog', BlogController::class);
+Route::resource('foto', FotoController::class);

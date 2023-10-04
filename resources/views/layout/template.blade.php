@@ -5,7 +5,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pondok Pesantren</title>
+    {{-- Meta untuk tampil di Whatsapp --}}
+    @if (Request::segment(1) == '')
+        <meta property="og:title" content="Pesantren Yasin" />
+        <meta name="description" content="Pesantren Moderan dengan Fasilitas Lengkap" />
+        <meta property="og:url" content="http://pesantrenyasin.com" />
+        <meta property="og:description" content="Pesantren Yasin" />
+        <meta property="og:image" content="{{ asset('assets/icons/ic-logo.png') }}" />
+        <meta property="og:type" content="article" />
+        <title>Pesantren Yasin</title>
+    @elseif (Request::segment(1) == 'detail')
+        <meta property="og:title" content="{{ $artikel->judul }}" />
+        <meta name="description" content="{{ $artikel->judul }}" />
+        <meta property="og:url" content="http://pesantrenyasin.com/detail/{{ $artikel->slug }}" />
+        <meta property="og:description" content="{{ $artikel->judul }}" />
+        @if ($artikel->image)
+            <meta property="og:image" content="{{ asset('storage/artikel/' . $artikel->image) }}" />
+        @else
+            <meta property="og:image" content="{{ asset('assets/icons/ic-logo.png') }}" />
+        @endif
+        <meta property="og:type" content="article" />
+
+        <title>Pesantren Yasin | {{ $artikel->judul }}</title>
+    @endif
+
+    {{-- Meta untuk tampil di Whatsapp --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">

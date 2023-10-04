@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Foto Kegiatan</h5>
                             <p class="card-text">Atur dan kelola artikel foto</p>
-                            <a href="#" class="btn btn-primary">Detail</a>
+                            <a href="/foto" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
