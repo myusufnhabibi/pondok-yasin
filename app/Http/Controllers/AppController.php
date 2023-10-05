@@ -11,7 +11,7 @@ class AppController extends Controller
     //
     public function index()
     {
-        return view('welcome', ['artikels' => Blog::orderBy('id', 'DESC')->limit(3)->get(), 'fotos' => Foto::orderBy('id', 'DESC')->get()]);
+        return view('welcome', ['artikels' => Blog::orderBy('id', 'DESC')->limit(3)->get(), 'fotos' => Foto::orderBy('id', 'DESC')->limit(4)->get()]);
     }
 
     public function berita()
@@ -22,5 +22,10 @@ class AppController extends Controller
     public function detail($slug)
     {
         return view('berita.detail-berita', ['artikel' => Blog::where('slug', $slug)->first()]);
+    }
+
+    public function gallery()
+    {
+        return view('foto.list-foto', ['fotos' => Foto::orderBy('id', 'DESC')->get()]);
     }
 }

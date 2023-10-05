@@ -23,9 +23,7 @@ Route::get('/berita', [AppController::class, 'berita']);
 Route::get('/detail/{slug}', [AppController::class, 'detail']);
 
 
-Route::get('/foto', function () {
-    return view('foto.list-foto');
-});
+Route::get('/gallery', [AppController::class, 'gallery']);
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate']);

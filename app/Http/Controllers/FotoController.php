@@ -47,7 +47,7 @@ class FotoController extends Controller
         Image::make($request->file('foto')->getRealPath())->resize(770, 512)->save($storage_foto);
 
         Foto::create([
-            'foto' => $request->$fileName
+            'foto' => $fileName
         ]);
 
         return redirect('/foto')->with('success', 'Data berhasil di simpan');
@@ -84,7 +84,30 @@ class FotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Image
+        $foto = Foto::find($id);
+
+        if ($request->hasFile('foto')) {
+            if (\File::exists('storage/foto/' . $foto->foto)) {
+                \File::delete('storage/foto/' . $request->old_image);
+            }
+            $fileName = time() . '.' . $request->foto->extension();
+            // $request->file('image')->storeAs('public/foto', $fileName);
+            $storage_foto =  public_path() . '/storage/foto/' . $fileName;
+            Image::make($request->file('foto')->getRealPath())->resize(770, 512)->save($storage_foto);
+        }
+
+        if ($request->hasFile('foto')) {
+            $checkFileName = $fileName;
+        } else {
+            $checkFileName = $request->old_image;
+        }
+
+        $foto->update([
+            'foto' => $checkFileName
+        ]);
+
+        return redirect('/foto')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -95,6 +118,12 @@ class FotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $foto = Foto::find($id);
+        if (\File::exists('storage/foto/' . $foto->foto)) {
+            \File::delete('storage/foto/' . $foto->foto);
+        }
+
+        $foto->delete();
+        return redirect('/foto')->with('success', 'Data berhasil di hapus');
     }
 }
